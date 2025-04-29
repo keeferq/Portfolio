@@ -4,8 +4,265 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: UAV-Based Bathymetry - Quinn Keefer</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Link to external stylesheet if you have one -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* --- Paste ALL your existing styles.css content here --- */
+        /* --- OR ensure your styles.css link above is correct --- */
+
+        /* Example base styles if not using external file (ADD YOUR FULL STYLES.CSS HERE) */
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-blue: #007bff; --primary-blue-dark: #0056b3; --sidebar-bg: #2a3a4a; --header-bg: #343a40; --footer-bg: #212529; --secondary-gray: #6c757d; --light-gray: #f8f9fa; --white: #ffffff; --dark-text: #212529; --heading-text: #343a40; --border-color: #dee2e6; --header-text: var(--white); --footer-text: var(--light-gray); --link-color: var(--primary-blue); --link-hover-color: var(--primary-blue-dark);
+            --color-arcgis: #005E95; --color-excel: #217346; --color-rstudio: #75AADB; --color-vscode: #007ACC; --color-drone2map: #56a0d3; --color-hydromagic: #1f77b4; --color-r: #276DC3; --color-js: #F7DF1E; --color-js-text: #333; --color-htmlcss: #E44D26; --color-geojson: #f8671d; --color-python: #3572A5;
+            --header-height: 60px;
+        }
+        html { box-sizing: border-box; } *, *:before, *:after { box-sizing: inherit; }
+        body { font-family: 'Source Sans Pro', 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; color: var(--dark-text); background-color: var(--white); font-size: 16px; padding-top: var(--header-height); }
+        body.page-project-detail { padding-top: var(--header-height);} /* Ensure padding for project pages */
+        main { flex-grow: 1; padding: 3rem 2rem; max-width: 1200px; margin: 0 auto; width: 100%; }
+        a { color: var(--link-color); text-decoration: none; transition: color 0.2s ease; } a:hover { color: var(--link-hover-color); text-decoration: underline; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lora', Georgia, serif; margin-top: 0; color: var(--heading-text); line-height: 1.3; font-weight: 500; }
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; position: relative; padding-bottom: 10px; font-weight: 600; text-align: left; } h2:after { content: ''; display: block; height: 3px; width: 50px; background-color: var(--primary-blue); position: absolute; bottom: 0; left: 0; }
+        h3 { font-size: 1.6rem; margin-bottom: 1.2rem; } h4 { font-size: 1.1rem; color: var(--secondary-gray); font-weight: 400; }
+        p { margin-bottom: 1rem; line-height: 1.7; } ul { list-style: none; padding-left: 0; margin-bottom: 1rem; } li { margin-bottom: 0.6rem; }
+        .cta-button, .view-project-button, .overlay-button, .resume-button { display: inline-block; padding: 0.75rem 1.5rem; background-color: var(--primary-blue); color: var(--white) !important; text-decoration: none; border-radius: 4px; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; font-weight: 600; letter-spacing: 0.5px; border: none; cursor: pointer; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); text-transform: uppercase; font-size: 0.9em; text-align: center; } .cta-button:hover, .view-project-button:hover, .overlay-button:hover, .resume-button:hover { background-color: var(--primary-blue-dark); text-decoration: none; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); }
+        header { background-color: var(--header-bg); color: var(--header-text); padding: 0 2rem; height: var(--header-height); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: flex; align-items: center; } nav { display: flex; gap: 1.5rem; } nav a { color: var(--header-text); font-weight: 400; text-decoration: none; padding: 0.25rem 0; position: relative; opacity: 0.85; transition: opacity 0.2s ease, color 0.2s ease; } nav a:hover { opacity: 1; text-decoration: none; color: var(--white); } nav a:after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background-color: var(--header-text); transition: width 0.3s ease; } nav a:hover:after { width: 100%; } nav a.active { color: var(--white); opacity: 1; font-weight: 600; } nav a.active::after { width: 100%; background-color: var(--white); }
+        main > section { margin-bottom: 3rem; padding-top: 1rem; }
+        .project-detail-page { padding-top: 2rem; padding-bottom: 1rem;}
+        .project-detail-page h2 { margin-top: 0; margin-bottom: 0.5rem; font-size: 2.2rem; }
+        .project-detail-page > h4 { color: var(--secondary-gray); font-style: normal; margin-top: 0; margin-bottom: 2.5rem; font-size: 1.1rem; font-weight: 400; }
+        .project-detail-page section { margin-bottom: 3rem; }
+        .project-detail-page h3 { font-size: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.6rem; margin-bottom: 1.5rem; }
+        .project-detail-page .usage-visualization h4 { font-size: 1.1rem; color: var(--heading-text); font-weight: 600; margin-bottom: 1.5rem; }
+        .project-detail-page ul li { position: relative; padding-left: 1.75rem; }
+        .project-detail-page ul li::before { content: "▹"; color: var(--primary-blue); font-weight: bold; position: absolute; left: 0; top: 1px; font-size: 1.2em; }
+        .usage-visualization { background-color: var(--light-gray); padding: 2rem; border-radius: 6px; margin-bottom: 3rem; border: 1px solid var(--border-color); }
+        .usage-bars-section { margin-bottom: 2rem; } .usage-bars-section:last-child { margin-bottom: 0; }
+        .usage-bar { margin-bottom: 1rem; display: flex; align-items: center; flex-wrap: wrap; }
+        .bar-label { width: 120px; flex-shrink: 0; padding-right: 1rem; font-size: 0.9rem; color: var(--dark-text); font-weight: 500; }
+        .bar-track { flex-grow: 1; height: 12px; background-color: #e0e0e0; border-radius: 6px; overflow: hidden; position: relative; min-width: 150px; }
+        .bar-fill { height: 100%; border-radius: 6px; transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1); text-align: right; color: white; font-size: 0.8rem; line-height: 12px; box-sizing: border-box; }
+        .bar-percentage { width: 45px; flex-shrink: 0; padding-left: 1rem; font-size: 0.9rem; color: var(--secondary-gray); text-align: right; }
+        .arcgis-color { background-color: var(--color-arcgis); } .excel-color { background-color: var(--color-excel); } .rstudio-color { background-color: var(--color-rstudio); } .vscode-color { background-color: var(--color-vscode); } .drone2map-color { background-color: var(--color-drone2map); } .hydromagic-color { background-color: var(--color-hydromagic); }
+        .language-color-r { background-color: var(--color-r); } .language-color-js { background-color: var(--color-js); color: var(--color-js-text) !important; } .language-color-htmlcss { background-color: var(--color-htmlcss); } .language-color-geojson { background-color: var(--color-geojson); } .language-color-python { background-color: var(--color-python); }
+        .project-intro { margin-bottom: 3rem; background-color: var(--light-gray); padding: 2rem; border-radius: 6px; border: 1px solid var(--border-color); }
+        .project-intro h3 { margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary-blue); display: inline-block; }
+        .poster-award-section { margin-bottom: 3rem; padding: 2rem; background-color: var(--light-gray); border-radius: 6px; border: 1px solid var(--border-color); text-align: center; }
+        .poster-award-section h3 { margin-bottom: 1.5rem; border-bottom: 2px solid var(--primary-blue); display: inline-block; padding-bottom: 0.5rem; }
+        .poster-container { margin-bottom: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .poster-image { display: block; max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .award-mention { font-size: 1.05em; color: var(--heading-text); line-height: 1.7; }
+        .award-mention i { color: var(--primary-blue); margin-right: 0.5rem; font-size: 1.2em; }
+        .award-mention a { font-weight: 600; }
+        footer { background-color: var(--footer-bg); color: var(--footer-text); text-align: center; padding: 2rem 0; width: 100%; margin-top: auto; font-size: 0.9rem; } .footer-content { max-width: 1200px; margin: 0 auto 1.5rem auto; display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; padding: 0 2rem; gap: 1.5rem; } .contact-info p { margin: 0.3rem 0; font-size: 0.9em; color: var(--footer-text); } .contact-info i { margin-right: 0.75rem; color: var(--primary-blue); width: 20px; text-align: center; } .social-links { display: flex; gap: 1.2rem; } .social-links a { color: var(--footer-text); font-size: 1.5rem; transition: color 0.3s ease, transform 0.3s ease; opacity: 0.8; } .social-links a:hover { color: var(--primary-blue); transform: translateY(-3px); opacity: 1; text-decoration: none; } .copyright { width: 100%; text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.9em; color: var(--secondary-gray); }
+
+
+        /* --- VISUAL SHOWCASE & TOGGLE --- */
+        .visual-showcase { margin-bottom: 3rem; }
+        .visual-showcase h3 { border-bottom: 1px solid var(--border-color); padding-bottom: 0.6rem; margin-bottom: 1.5rem; }
+        .view-toggle { margin-bottom: 1.5rem; display: flex; gap: 0.5rem; justify-content: flex-end; }
+        .toggle-btn { padding: 0.5rem 1rem; background-color: var(--light-gray); border: 1px solid var(--border-color); color: var(--dark-text); border-radius: 4px; cursor: pointer; transition: background-color 0.2s ease, box-shadow 0.2s ease; font-size: 0.9em; }
+        .toggle-btn:hover { background-color: #e9ecef; }
+        .toggle-btn.active { background-color: var(--primary-blue); color: var(--white); border-color: var(--primary-blue); box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2); }
+        .toggle-btn i { margin-right: 0.5rem; }
+
+        /* --- HIDE/SHOW BASED ON TOGGLE --- */
+        .visuals-container.view-grid .simple-carousel { display: none; } /* Hide new carousel in grid view */
+        .visuals-container.view-carousel .image-grid { display: none; } /* Hide grid in carousel view */
+
+        /* --- NEW: SIMPLE CAROUSEEL STYLES --- */
+        .simple-carousel {
+            position: relative;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--white); /* Changed background */
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .simple-carousel-track-container {
+            /* Enable scrolling */
+            overflow-x: scroll;
+            /* HIDE scrollbar across browsers */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE/Edge */
+             /* CSS Scroll Snap */
+            scroll-snap-type: x mandatory; /* Snap horizontally, always snap */
+            scroll-behavior: smooth; /* Animate scrolling */
+        }
+        .simple-carousel-track-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome/Safari/Opera */
+        }
+
+        .simple-carousel-track {
+            display: flex; /* Align slides horizontally */
+            padding: 0; margin: 0; list-style: none;
+            /* Track width will be intrinsically set by flex items */
+            transition: transform 0.3s ease-out; /* Fallback transition if JS animates */
+        }
+
+        .simple-carousel-slide {
+            /* Each slide takes 100% of the container width */
+            flex: 0 0 100%;
+            width: 100%;
+             /* Required for scroll snap */
+            scroll-snap-align: center; /* Align center of slide to center of container */
+            scroll-snap-stop: always; /* Always stop on a snap point */
+             /* Content Styling */
+             box-sizing: border-box;
+             padding: 1.5rem 2rem; /* Padding inside each slide */
+             text-align: center; /* Center figure content */
+             position: relative; /* Needed for potential overlays inside */
+             display: flex; /* Center figure vertically and horizontally */
+             justify-content: center;
+             align-items: center;
+             min-height: 400px; /* Minimum height for consistency */
+         }
+
+         .simple-carousel-slide figure {
+             margin: 0; padding: 0;
+             width: 100%;
+             max-width: 650px; /* Limit content width */
+         }
+
+         .simple-carousel-slide img {
+             display: block;
+             width: 100%;
+             height: auto;
+             max-height: 380px; /* Max image height */
+             object-fit: contain; /* Fit image nicely */
+             margin: 0 auto 0.75rem auto; /* Center image */
+             border-radius: 4px;
+             border: 1px solid var(--border-color);
+         }
+
+         .simple-carousel-slide figcaption {
+             font-size: 0.9em;
+             color: var(--secondary-gray);
+             line-height: 1.4;
+         }
+
+         /* Optional: Interactive element styling (Example) */
+         .simple-carousel-slide figure[data-live-map-url] { cursor: pointer; }
+         .visual-hover-overlay {
+             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+             background: rgba(0, 50, 100, 0.6); /* Semi-transparent background */
+             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+             opacity: 0; transition: opacity 0.3s ease; color: var(--white);
+             padding: 1rem; box-sizing: border-box; z-index: 2;
+             pointer-events: none; /* Allow clicks to pass through unless on button */
+         }
+         .simple-carousel-slide figure:hover .visual-hover-overlay { opacity: 1; }
+         .visual-hover-overlay > * { pointer-events: auto; }
+         .visual-hover-overlay .overlay-button {
+             margin-bottom: 0.75rem; background-color: var(--white); color: var(--primary-blue) !important; border: 1px solid var(--primary-blue);
+             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); transform: translateY(10px); transition: transform 0.3s ease;
+         }
+          .simple-carousel-slide figure:hover .visual-hover-overlay .overlay-button { transform: translateY(0); }
+         .visual-hover-overlay .overlay-button:hover { background-color: #eee; }
+         .visual-hover-overlay {
+             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+             background: rgba(0, 50, 100, 0.4); /* UPDATED alpha value */
+             display: flex; flex-direction: column; justify-content: center;
+             align-items: center; text-align: center;
+             opacity: 0; transition: opacity 0.3s ease; color: var(--white);
+             padding: 1rem; box-sizing: border-box; z-index: 2;
+             pointer-events: none;
+         }
+
+         /* Carousel Controls (Buttons & Dots) */
+         .carousel-controls {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             padding: 0.5rem 1rem; /* Adjust padding */
+             background-color: var(--light-gray); /* Slight background for controls area */
+             border-top: 1px solid var(--border-color);
+         }
+
+         .carousel-nav-dots {
+             display: flex;
+             gap: 8px;
+             justify-content: center; /* Center dots */
+             flex-grow: 1; /* Allow dots to take available space */
+             margin: 0 1rem; /* Space around dots */
+         }
+
+         .carousel-dot {
+             width: 10px; height: 10px;
+             border-radius: 50%;
+             background-color: #ccc;
+             border: none; padding: 0;
+             cursor: pointer;
+             transition: background-color 0.2s ease;
+         }
+         .carousel-dot:hover { background-color: #aaa; }
+         .carousel-dot.active { background-color: var(--primary-blue); }
+
+         .carousel-btn {
+             background: transparent;
+             border: none;
+             color: var(--primary-blue);
+             font-size: 1.5rem; /* Adjust size */
+             cursor: pointer;
+             padding: 0.3rem; /* Increase clickable area */
+             line-height: 1;
+             transition: color 0.2s ease, transform 0.1s ease;
+             flex-shrink: 0; /* Prevent buttons from shrinking */
+         }
+         .carousel-btn:hover { color: var(--primary-blue-dark); }
+         .carousel-btn:active { transform: scale(0.95); }
+         .carousel-btn[disabled] {
+             color: #ccc;
+             cursor: not-allowed;
+             transform: none;
+         }
+
+
+        /* --- IMAGE GRID STYLES (Unaffected by carousel change) --- */
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .grid-item { position: relative; overflow: hidden; border: 1px solid var(--border-color); border-radius: 6px; background-color: var(--white); padding: 0; margin: 0; transition: box-shadow 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
+        .grid-item:hover { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+        .grid-item > a { display: block; text-decoration: none; color: inherit; line-height: 0; /* For images inside links */}
+        .grid-item figure {margin: 0; display: flex; flex-direction: column; height: 100%;} /* Ensure figure takes full height */
+        .grid-item img { display: block; width: 100%; height: 200px; object-fit: cover; flex-shrink: 0; }
+        .grid-item figcaption { padding: 0.8rem 1rem; font-size: 0.9em; color: var(--dark-text); text-align: center; background-color: var(--white); width: 100%; box-sizing: border-box; flex-grow: 1; /* Allow caption to grow if needed */ border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; }
+        .grid-item .visual-hover-overlay .overlay-button {background-color: var(--primary-blue); color: var(--white)!important; border: none;} /* Keep overlay button style for grid */
+        .grid-item figure[data-live-map-url]:hover img { opacity: 0.6; transition: opacity 0.3s ease;} /* Example dim effect on hover */
+        .grid-item figure[data-live-map-url]:hover .visual-hover-overlay {opacity: 1;}
+
+
+        /* Responsive Adjustments (Add your existing responsive styles here too) */
+        @media (max-width: 768px) {
+            body { padding-top: 0; }
+            header { position: static; height: auto; }
+             main { padding: 2rem 1.5rem; }
+             h2 { font-size: 1.8rem; }
+             .project-detail-page h3 { font-size: 1.4rem; }
+             .simple-carousel-slide { padding: 1rem; min-height: 350px; }
+             .simple-carousel-slide img { max-height: 280px; }
+             .carousel-btn { font-size: 1.3rem; }
+             .view-toggle { justify-content: center; }
+        }
+
+        @media (max-width: 576px) {
+             main { padding: 1.5rem 1rem; }
+             .usage-bar { flex-direction: column; align-items: flex-start; } .bar-label { width: 100%; margin-bottom: 0.3rem; } .bar-track { width: 100%; } .bar-percentage { width: auto; text-align: left; margin-top: 0.4rem; padding-left: 0; }
+             .simple-carousel-slide { min-height: 300px; }
+             .simple-carousel-slide img { max-height: 220px; }
+             .simple-carousel-slide figcaption { font-size: 0.85em; }
+             .carousel-controls { padding: 0.3rem 0.8rem; }
+             .carousel-dot { width: 8px; height: 8px; }
+             .carousel-btn { font-size: 1.2rem; padding: 0.2rem;}
+             .view-toggle button { font-size: 0.8em; padding: 0.4rem 0.8rem;}
+        }
+
+
+    </style>
     <script>
         // Add body class for specific page styling rules
         document.addEventListener('DOMContentLoaded', () => {
@@ -27,7 +284,7 @@
         <h2>UAV-Based Bathymetry System Testing & Validation</h2>
         <h4>Ongoing Research (May 2024 - Present)</h4>
 
-        <!-- Visual Showcase Section (Adapted from project1.html) -->
+        <!-- Visual Showcase Section -->
         <section class="visual-showcase">
             <h3>Project Visuals & Outputs</h3>
             <div class="view-toggle">
@@ -39,17 +296,17 @@
                 </button>
             </div>
 
-            <div class="visuals-container view-carousel">
+            <div class="visuals-container view-carousel"> <!-- Starts in carousel view -->
 
-                <!-- Carousel Structure -->
-                <div class="carousel">
-                    <div class="carousel-track-container">
-                        <ul class="carousel-track">
+                 <!-- NEW Simple Carousel Structure -->
+                <div class="simple-carousel">
+                    <div class="simple-carousel-track-container" id="carousel-track-container">
+                        <ul class="simple-carousel-track" id="carousel-track">
                             <!-- Slide 1: Interactive 3D Scene -->
-                            <li class="carousel-slide current-slide">
+                            <li class="simple-carousel-slide" id="slide-p2-1">
                                 <figure data-live-map-url="https://appalachian.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b51228fd2f8a4c80b61c2c8573adb456">
                                     <img src="assets/images/project2_preview.png" alt="3D view of lake bathymetry generated from UAV sonar data">
-                                    <figcaption>Interactive Output: 3D Bathymetric Model</figcaption>
+                                    <figcaption>Interactive Output: 3D Bathymetric Model (View in ArcGIS Online)</figcaption>
                                     <div class="visual-hover-overlay">
                                         <a href="https://appalachian.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b51228fd2f8a4c80b61c2c8573adb456" target="_blank" class="view-project-button overlay-button">
                                             <i class="fas fa-external-link-alt"></i> View 3D Scene
@@ -58,96 +315,95 @@
                                     </div>
                                 </figure>
                             </li>
-                            <!-- Slide 2: Placeholder for Fieldwork Photo -->
-                            <li class="carousel-slide">
+                            <!-- Slide 2: Fieldwork Photo -->
+                            <li class="simple-carousel-slide" id="slide-p2-2">
                                 <figure>
-                                    <!-- [**TODO: Replace with actual fieldwork image**] -->
-                                    <img src="assets/images/project2_field.png" alt="UAV Sonar system during field deployment (Placeholder)">
-                                    <figcaption>Fieldwork: Left: Collecting Ground Truth data, Right: Drone Platform with Sonar Sensor</figcaption>
-                                    <!-- Add hover overlay if you want a larger view link -->
+                                    <img src="assets/images/project2_field.png" alt="UAV Sonar system during field deployment">
+                                    <figcaption>Fieldwork: Left - Collecting Ground Truth Data; Right - Drone Platform with Sonar Sensor.</figcaption>
                                 </figure>
                             </li>
-                             <!-- Slide 3: Placeholder for ArcGIS Pro Screenshot -->
-                             <li class="carousel-slide">
+                             <!-- Slide 3: Processing Screenshot -->
+                             <li class="simple-carousel-slide" id="slide-p2-3">
                                 <figure>
-                                     <!-- [**TODO: Replace with actual ArcGIS Pro image**] -->
-                                    <img src="assets/images/project2_change.png" alt="Change Detection Raster">
-                                    <figcaption>Processing: Change Detection Raster</figcaption>
-                                     <!-- Add hover overlay if you want a larger view link -->
+                                    <img src="assets/images/project2_change.png" alt="Change Detection Raster in GIS software">
+                                    <figcaption>Processing: Example Change Detection Raster Showing Sediment Accumulation/Erosion.</figcaption>
                                 </figure>
                             </li>
-                            <!-- Slide 4: Placeholder for another Map Output -->
-                            <li class="carousel-slide">
+                            <!-- Slide 4: 3D Visualization Map -->
+                            <li class="simple-carousel-slide" id="slide-p2-4">
                                  <figure>
-                                     <!-- [**TODO: Replace with actual 2D Map image**] -->
-                                     <img src="assets/images/project2_3dviz.png" alt="Generated 2D bathymetry map (Placeholder)">
-                                     <figcaption>Map Output: 3D Bathymetry Visualization Map</figcaption>
-                                      <!-- Add hover overlay if you want a larger view link -->
+                                     <img src="assets/images/project2_3dviz.png" alt="Generated 3D bathymetry visualization map">
+                                     <figcaption>Map Output: Rendered 3D Bathymetry Visualization.</figcaption>
                                 </figure>
                             </li>
                             <!-- Add more slides as needed -->
                         </ul>
                     </div>
-                    <!-- Carousel buttons and nav -->
-                    <button class="carousel-button carousel-button--left" aria-label="Previous Visual"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-button carousel-button--right" aria-label="Next Visual"><i class="fas fa-chevron-right"></i></button>
-                    <div class="carousel-nav">
-                        <!-- [**TODO: Adjust indicator count to match number of slides**] -->
-                        <button class="carousel-indicator current-slide"></button>
-                        <button class="carousel-indicator"></button>
-                        <button class="carousel-indicator"></button>
-                        <button class="carousel-indicator"></button>
-                    </div>
+                     <!-- Controls Outside the scroll container -->
+                     <div class="carousel-controls">
+                         <button class="carousel-btn carousel-prev" aria-label="Previous Slide">
+                              <i class="fas fa-chevron-left"></i>
+                          </button>
+                          <div class="carousel-nav-dots" id="carousel-dots">
+                              <!-- Dots will be generated by JS -->
+                          </div>
+                          <button class="carousel-btn carousel-next" aria-label="Next Slide">
+                              <i class="fas fa-chevron-right"></i>
+                          </button>
+                      </div>
                 </div>
+                <!-- End of NEW Simple Carousel -->
+
 
                 <!-- Grid Structure (Mirrors the carousel items) -->
                 <div class="image-grid">
                      <!-- Grid Item 1: Interactive 3D Scene -->
-                    <figure class="grid-item" data-live-map-url="https://appalachian.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b51228fd2f8a4c80b61c2c8573adb456">
-                        <img src="assets/images/project2_preview.png" alt="3D view of lake bathymetry generated from UAV sonar data">
-                        <figcaption>Interactive Output: 3D Bathymetric Model</figcaption>
-                        <div class="visual-hover-overlay">
-                            <a href="https://appalachian.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b51228fd2f8a4c80b61c2c8573adb456" target="_blank" class="view-project-button overlay-button">
-                                <i class="fas fa-external-link-alt"></i> View 3D Scene
-                            </a>
-                            <p>Explore the model in ArcGIS Online.</p>
+                    <figure class="grid-item">
+                        <div data-live-map-url="https://appalachian.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b51228fd2f8a4c80b61c2c8573adb456">
+                            <img src="assets/images/project2_preview.png" alt="3D view of lake bathymetry">
+                            <figcaption>Interactive 3D Bathymetric Model</figcaption>
+                            <div class="visual-hover-overlay">
+                                <a href="https://appalachian.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b51228fd2f8a4c80b61c2c8573adb456" target="_blank" class="view-project-button overlay-button">
+                                    <i class="fas fa-external-link-alt"></i> View 3D Scene
+                                </a>
+                                <p>Explore the model in ArcGIS Online.</p>
+                            </div>
                         </div>
                     </figure>
-                    <!-- Grid Item 2: Placeholder Fieldwork -->
+                    <!-- Grid Item 2: Fieldwork -->
                      <figure class="grid-item">
                         <a href="assets/images/project2_field.png" target="_blank" title="View larger: UAV Field Deployment">
                             <img src="assets/images/project2_field.png" alt="UAV Sonar system during field deployment">
+                            <figcaption>Fieldwork: Data Collection & Setup</figcaption>
                         </a>
-                        <figcaption>Fieldwork: Left: Collecting Ground Truth data, Right: Drone Platform with Sonar Sensor</figcaption>
                     </figure>
-                     <!-- Grid Item 3: Placeholder ArcGIS Pro -->
+                     <!-- Grid Item 3: Processing -->
                      <figure class="grid-item">
                         <a href="assets/images/project2_change.png" target="_blank" title="View larger: Change Detection Raster">
                          <img src="assets/images/project2_change.png" alt="Change Detection Raster">
+                         <figcaption>Processing: Change Detection Output</figcaption>
                         </a>
-                         <figcaption>Processing: ArcGIS Pro Workflow</figcaption>
                     </figure>
-                     <!-- Grid Item 4: Placeholder Map -->
+                     <!-- Grid Item 4: Map Output -->
                      <figure class="grid-item">
                         <a href="assets/images/project2_3dviz.png" target="_blank" title="View larger: 3D Bathymetry Map">
                            <img src="assets/images/project2_3dviz.png" alt="Generated 3D bathymetry map">
+                           <figcaption>Map Output: 3D Visualization</figcaption>
                         </a>
-                        <figcaption>Map Output: 3D Bathymetry Visualization Map</figcaption>
                     </figure>
                     <!-- Add more figures corresponding to slides -->
                 </div>
             </div>
         </section>
 
-        <!-- Introduction / Overview Section (Adapted from project1.html) -->
+        <!-- Introduction / Overview Section -->
         <section class="project-intro">
             <h3>Project Overview</h3>
-            <!-- Content from original "Project Description" -->
             <p>This ongoing research project focuses on testing and validating an innovative Unoccupied Aerial Vehicle (UAV)-based sonar system for bathymetric mapping (measuring underwater topography). My involvement has spanned the entire workflow, from field data collection using the custom drone setup to processing the collected data and generating final map products and visualizations.</p>
             <p>The primary goal is to assess the accuracy, efficiency, and applicability of this novel drone-sonar integration compared to traditional bathymetric survey methods. Work involves processing sonar readings, correcting for drone positioning (RTK GPS), generating point clouds, interpolating surfaces (e.g., using IDW or Kriging), and creating 2D and 3D map products using GIS software.</p>
         </section>
 
-         <!-- Poster Section (Adapted from project1.html's poster section) -->
+         <!-- Poster Section -->
          <section class="poster-award-section">
              <h3>Project Poster</h3>
               <div class="poster-container">
@@ -155,15 +411,13 @@
                     <img src="assets/images/project2_poster_preview.png" alt="Preview of the UAV Bathymetry Research Poster" class="poster-image">
                   </a>
               </div>
-              <!-- Simplified text, no award mention unless applicable -->
               <p class="award-mention">
-                   <!-- [**TODO: Add award info if applicable, otherwise just link**] -->
-                   <!-- <i class="fas fa-award"></i> [Mention Award if Received] -->
+                  <!-- Removed Award Icon if not applicable for this project -->
                   <i class="fas fa-file-pdf"></i> This poster details the methodology and preliminary results. View the full poster <a href="assets/files/project2_poster.pdf" target="_blank">here (PDF)</a>.
               </p>
          </section>
 
-        <!-- Usage Visualization Section (Adapted from project1.html) -->
+        <!-- Usage Visualization Section -->
         <section class="usage-visualization">
              <h3>Key Tools & Technologies</h3>
             <div class="usage-bars-section">
@@ -191,13 +445,11 @@
                 </div>
                 <div class="usage-bar">
                     <span class="bar-label">Hydromagic</span>
-                     <!-- Assuming --color-hydromagic exists in CSS -->
                     <div class="bar-track">
                         <div class="bar-fill hydromagic-color" data-percentage="5"></div>
                     </div>
                     <span class="bar-percentage">5%</span>
                 </div>
-                 <!-- Adding Python as per original comment -->
                  <div class="usage-bar">
                     <span class="bar-label">Python (ArcPy)</span>
                     <div class="bar-track">
@@ -206,13 +458,12 @@
                      <span class="bar-percentage">5%</span>
                 </div>
             </div>
-           
+             <!-- Note: Removed Languages section if not applicable here -->
         </section>
 
          <!-- Lessons Learned Section -->
          <section>
             <h3>Lessons Learned & Key Outcomes</h3>
-            <!-- Using existing content, ensured formatting matches project1 -->
             <p>This project has provided hands-on experience with cutting-edge remote sensing technology and advanced geospatial workflows.</p>
             <ul>
                 <li>Gained expertise in planning and executing UAV-based field surveys, including RTK GPS integration and flight planning considerations for bathymetry.</li>
@@ -220,12 +471,8 @@
                 <li>Developed advanced skills in 3D data interpolation (e.g., IDW, Kriging, TIN creation), geostatistical analysis, and visualization (creating DEMs, hillshades, interactive 3D scenes).</li>
                 <li>Learned about accuracy assessment techniques specific to bathymetric data, comparing UAV results with traditional methods or ground truth points.</li>
                 <li>Familiarized with specialized software like Hydromagic for initial sonar log processing and Drone2Map for potential surface modeling or orthomosaic integration (if applicable).</li>
-               
             </ul>
         </section>
-
-        <!-- Removed the separate "Code Repository / Outputs" section -->
-        <!-- Links should primarily be in Visual Showcase hovers or Poster section -->
 
     </main>
 
@@ -233,203 +480,196 @@
         <div class="footer-content">
             <div class="contact-info">
                 <p><i class="fas fa-envelope"></i>quinn.keefer@gmail.com</p>
-
             </div>
             <div class="social-links">
                 <a href="https://github.com/keeferq" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/quinn-keefer-b5043b349/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                 <!-- Add other social links here -->
             </div>
         </div>
          <p class="copyright">© 2025 Quinn Keefer</p>
     </footer>
 
-     <!-- Full JavaScript from project1.html -->
+      <!-- NEW Carousel JavaScript & View Toggle -->
      <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Bar Animation ---
-            const fillBars = document.querySelectorAll('.bar-fill');
-            fillBars.forEach(bar => {
-                const percentage = bar.getAttribute('data-percentage');
-                 // Slight delay to ensure visibility for animation
-                 setTimeout(() => { bar.style.width = percentage + '%'; }, 50);
+            console.log("Project Detail DOM Loaded");
+
+            // --- View Toggle Logic ---
+            const visualsContainer = document.querySelector('.visuals-container');
+            const viewCarouselBtn = document.getElementById('view-carousel-btn');
+            const viewGridBtn = document.getElementById('view-grid-btn');
+            let isCarouselActive = visualsContainer ? visualsContainer.classList.contains('view-carousel') : false;
+
+            if (visualsContainer && viewCarouselBtn && viewGridBtn) {
+                viewCarouselBtn.addEventListener('click', () => {
+                    if (!visualsContainer.classList.contains('view-carousel')) {
+                        visualsContainer.classList.remove('view-grid');
+                        visualsContainer.classList.add('view-carousel');
+                        viewCarouselBtn.classList.add('active');
+                        viewGridBtn.classList.remove('active');
+                        isCarouselActive = true;
+                        // When switching TO carousel, re-initialize or update its state if needed
+                        setupCarousel(); // Or a function like updateCarouselState()
+                    }
+                });
+
+                viewGridBtn.addEventListener('click', () => {
+                    if (!visualsContainer.classList.contains('view-grid')) {
+                        visualsContainer.classList.remove('view-carousel');
+                        visualsContainer.classList.add('view-grid');
+                        viewGridBtn.classList.add('active');
+                        viewCarouselBtn.classList.remove('active');
+                        isCarouselActive = false;
+                    }
+                });
+            }
+
+            // --- Simple Carousel Logic ---
+            const carousel = document.querySelector('.simple-carousel');
+            const trackContainer = document.getElementById('carousel-track-container');
+            const track = document.getElementById('carousel-track');
+            const slides = track ? Array.from(track.children) : [];
+            const nextButton = document.querySelector('.carousel-next');
+            const prevButton = document.querySelector('.carousel-prev');
+            const dotsContainer = document.getElementById('carousel-dots');
+            let currentIndex = 0;
+            let dots = [];
+
+            function updateCarouselUI() {
+                if (!trackContainer || !slides.length) return;
+
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+
+                // Update buttons
+                if (prevButton) prevButton.disabled = currentIndex === 0;
+                if (nextButton) nextButton.disabled = currentIndex === slides.length - 1;
+
+                // Scroll the container
+                // Ensure the target slide exists before accessing offsetLeft
+                if (slides[currentIndex]) {
+                    const scrollLeft = slides[currentIndex].offsetLeft;
+                    trackContainer.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+                    console.log(`Moved to index: ${currentIndex}, scrollLeft: ${scrollLeft}`); // Debug
+                } else {
+                    console.error(`Slide index ${currentIndex} out of bounds.`);
+                }
+            }
+
+
+            function setupCarousel() {
+                 if (!carousel || !trackContainer || !track || !slides.length) {
+                    console.log("Carousel elements not found, skipping setup.");
+                    return; // Exit if essential elements are missing
+                }
+
+                console.log(`Setting up carousel with ${slides.length} slides.`);
+
+                // --- Create Dots ---
+                 if(dotsContainer){
+                    dotsContainer.innerHTML = ''; // Clear existing dots
+                     dots = []; // Reset dots array
+                    slides.forEach((_, index) => {
+                        const dot = document.createElement('button');
+                        dot.classList.add('carousel-dot');
+                        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                        dot.addEventListener('click', () => {
+                            currentIndex = index;
+                             updateCarouselUI();
+                         });
+                         dotsContainer.appendChild(dot);
+                         dots.push(dot);
+                    });
+                }else{
+                    console.log("Dots container not found.");
+                }
+
+
+                // --- Button Listeners ---
+                if(nextButton){
+                    nextButton.addEventListener('click', () => {
+                        if (currentIndex < slides.length - 1) {
+                            currentIndex++;
+                             updateCarouselUI();
+                         }
+                     });
+                }else{
+                    console.log("Next button not found.");
+                }
+
+
+                if(prevButton){
+                    prevButton.addEventListener('click', () => {
+                         if (currentIndex > 0) {
+                             currentIndex--;
+                             updateCarouselUI();
+                         }
+                     });
+                } else {
+                    console.log("Previous button not found.");
+                }
+
+
+                 // --- Scroll Snap Handling (Optional: Sync JS state if user scrolls manually) ---
+                 // This helps keep the dots/buttons in sync if the user manually swipes/scrolls
+                let scrollTimeout;
+                 trackContainer.addEventListener('scroll', () => {
+                     clearTimeout(scrollTimeout);
+                     scrollTimeout = setTimeout(() => {
+                         // Find the slide closest to the center after scrolling stops
+                         const containerCenter = trackContainer.scrollLeft + trackContainer.offsetWidth / 2;
+                         let closestIndex = 0;
+                         let minDistance = Infinity;
+
+                         slides.forEach((slide, index) => {
+                             // Ensure slide has rendered and has dimensions
+                             if (slide && slide.offsetWidth > 0) {
+                                 const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+                                 const distance = Math.abs(containerCenter - slideCenter);
+                                 if (distance < minDistance) {
+                                     minDistance = distance;
+                                     closestIndex = index;
+                                 }
+                             }
+                         });
+
+                         if (closestIndex !== currentIndex) {
+                              console.log(`Scroll detected, updating index from ${currentIndex} to ${closestIndex}`);
+                             currentIndex = closestIndex;
+                             updateCarouselUI(); // Update dots/buttons to match scrolled position
+                         }
+                     }, 150); // Adjust debounce delay if needed
+                 });
+
+
+                 // --- Initial State ---
+                 currentIndex = 0; // Ensure starting at 0
+                 updateCarouselUI();
+
+             }
+
+             // Only setup if initially visible OR setup can be triggered by view toggle
+             if(isCarouselActive) {
+                 setupCarousel();
+             }
+
+
+             // --- Bar Animation (Keep outside carousel logic) ---
+             const fillBars = document.querySelectorAll('.bar-fill');
+             fillBars.forEach(bar => {
+                 const percentage = bar.getAttribute('data-percentage');
+                 if (percentage) {
+                     // Slight delay helps ensure transition is applied after element is rendered
+                     setTimeout(() => {
+                         bar.style.width = percentage + '%';
+                     }, 100);
+                 }
              });
 
-            // --- View Toggle ---
-             const visualsContainer = document.querySelector('.visuals-container');
-             const viewCarouselBtn = document.getElementById('view-carousel-btn');
-             const viewGridBtn = document.getElementById('view-grid-btn');
-             if (visualsContainer && viewCarouselBtn && viewGridBtn) {
-                 viewCarouselBtn.addEventListener('click', () => {
-                    visualsContainer.classList.remove('view-grid');
-                    visualsContainer.classList.add('view-carousel');
-                    viewCarouselBtn.classList.add('active');
-                    viewGridBtn.classList.remove('active');
-                    // Optional: Re-init carousel size if needed after display change
-                    window.dispatchEvent(new Event('resize'));
-                 });
-                 viewGridBtn.addEventListener('click', () => {
-                    visualsContainer.classList.remove('view-carousel');
-                    visualsContainer.classList.add('view-grid');
-                    viewGridBtn.classList.add('active');
-                    viewCarouselBtn.classList.remove('active');
-                 });
-             }
-
-             // --- Carousel Functionality ---
-             const track = document.querySelector('.carousel-track');
-             if(track) {
-                 const slides = Array.from(track.children);
-                 const nextButton = document.querySelector('.carousel-button--right');
-                 const prevButton = document.querySelector('.carousel-button--left');
-                 const dotsNav = document.querySelector('.carousel-nav');
-                 const dots = dotsNav ? Array.from(dotsNav.children) : [];
-
-                 if (slides.length > 0) {
-                      let slideWidth = slides[0].getBoundingClientRect().width;
-                      // Ensure width is calculated correctly, esp if starting hidden
-                       if (slideWidth === 0 && visualsContainer.classList.contains('view-carousel')) {
-                           // Temporarily make it visible to calc width if needed (complex edge case)
-                            const parentContainer = track.closest('.carousel');
-                            if (parentContainer) {
-                                parentContainer.style.display = 'block'; // Make sure container visible
-                                parentContainer.style.opacity = '0';    // Hide visually
-                                slideWidth = slides[0].getBoundingClientRect().width;
-                                parentContainer.style.display = '';    // Revert
-                                parentContainer.style.opacity = '';
-                            }
-                       }
-
-
-                      const setSlidePosition = (slide, index) => {
-                           if (slideWidth > 0) { // Only set if width is valid
-                              slide.style.left = slideWidth * index + 'px';
-                           }
-                      };
-                      slides.forEach(setSlidePosition);
-
-                     const moveToSlide = (currentSlide, targetSlide) => {
-                        if (!targetSlide || !currentSlide || !track) return; // Added checks
-                        const targetLeft = targetSlide.style.left;
-                         if(targetLeft) {
-                           track.style.transform = 'translateX(-' + targetLeft + ')';
-                           currentSlide.classList.remove('current-slide');
-                           targetSlide.classList.add('current-slide');
-                         } else {
-                            console.warn("Target slide has no 'left' style property set.");
-                            // May need to recalculate positions here if resize failed previously
-                         }
-                    };
-                     const updateDots = (currentDot, targetDot) => {
-                        if (!currentDot || !targetDot) return;
-                        currentDot.classList.remove('current-slide');
-                        targetDot.classList.add('current-slide');
-                    }
-                     const hideShowArrows = (targetIndex) => {
-                        if (!prevButton || !nextButton || slides.length <= 1) {
-                            if(prevButton) prevButton.classList.add('is-hidden');
-                            if(nextButton) nextButton.classList.add('is-hidden');
-                            return;
-                        };
-
-                         if (targetIndex === 0) {
-                             prevButton.classList.add('is-hidden');
-                             nextButton.classList.remove('is-hidden');
-                         } else if (targetIndex === slides.length - 1) {
-                             prevButton.classList.remove('is-hidden');
-                             nextButton.classList.add('is-hidden');
-                         } else {
-                             prevButton.classList.remove('is-hidden');
-                             nextButton.classList.remove('is-hidden');
-                         }
-                     }
-
-                     // Initial setup for arrows and dots
-                     const initialSlideIndex = slides.findIndex(slide => slide.classList.contains('current-slide'));
-                     hideShowArrows(initialSlideIndex);
-                      if(dots.length > 0 && initialSlideIndex < dots.length) {
-                           dots.forEach(dot => dot.classList.remove('current-slide'));
-                           dots[initialSlideIndex].classList.add('current-slide');
-                      }
-
-
-                      if(prevButton) {
-                           prevButton.addEventListener('click', e => {
-                                const currentSlide = track.querySelector('.current-slide');
-                                const prevSlide = currentSlide.previousElementSibling;
-                                if (!prevSlide) return; // Don't move if already at the first
-                                const currentDot = dotsNav ? dotsNav.querySelector('.current-slide') : null;
-                                const prevDot = currentDot ? currentDot.previousElementSibling : null;
-                                const prevIndex = slides.findIndex(slide => slide === prevSlide);
-                                moveToSlide(currentSlide, prevSlide);
-                                updateDots(currentDot, prevDot);
-                                hideShowArrows(prevIndex);
-                           });
-                       }
-                      if(nextButton) {
-                           nextButton.addEventListener('click', e => {
-                                const currentSlide = track.querySelector('.current-slide');
-                                const nextSlide = currentSlide.nextElementSibling;
-                                 if (!nextSlide) return; // Don't move if already at the last
-                                const currentDot = dotsNav ? dotsNav.querySelector('.current-slide') : null;
-                                const nextDot = currentDot ? currentDot.nextElementSibling : null;
-                                const nextIndex = slides.findIndex(slide => slide === nextSlide);
-                                moveToSlide(currentSlide, nextSlide);
-                                updateDots(currentDot, nextDot);
-                                hideShowArrows(nextIndex);
-                           });
-                       }
-                     if(dotsNav && dots.length > 0) {
-                          dotsNav.addEventListener('click', e => {
-                              const targetDot = e.target.closest('button');
-                              if (!targetDot) return;
-                              const currentSlide = track.querySelector('.current-slide');
-                              const currentDot = dotsNav.querySelector('.current-slide');
-                              if (currentDot === targetDot) return; // Don't move if clicking current dot
-                              const targetIndex = dots.findIndex(dot => dot === targetDot);
-                              const targetSlide = slides[targetIndex];
-                              moveToSlide(currentSlide, targetSlide);
-                              updateDots(currentDot, targetDot);
-                              hideShowArrows(targetIndex);
-                          });
-                      }
-
-                      // Recalculate on resize
-                      const handleResize = () => {
-                            const currentVisibleSlide = track.querySelector('.current-slide'); // Find current before resize
-                            // Check if carousel is actually visible
-                            if(visualsContainer.classList.contains('view-carousel') && track.offsetWidth > 0) {
-                               slideWidth = slides[0].getBoundingClientRect().width;
-                               slides.forEach(setSlidePosition);
-                               // Immediately move track to correct position after resetting slide 'left'
-                               if(currentVisibleSlide && slideWidth > 0) {
-                                    track.style.transition = 'none'; // Prevent animation during resize adjustment
-                                    track.style.transform = 'translateX(-' + currentVisibleSlide.style.left + ')';
-                                    // Force repaint/reflow before re-enabling transition
-                                    track.offsetHeight;
-                                    track.style.transition = ''; // Re-enable transition
-                               } else if (slides.length > 0 && slideWidth > 0) {
-                                   // Fallback if current slide wasn't found? Reset to first.
-                                    track.style.transition = 'none';
-                                    track.style.transform = 'translateX(0px)';
-                                    track.offsetHeight;
-                                    track.style.transition = '';
-                                    if(!currentVisibleSlide) slides[0].classList.add('current-slide'); // Ensure one is current
-                               }
-                            }
-                      }
-
-                      window.addEventListener('resize', handleResize);
-                       // Call once initially in case calculation failed before
-                      handleResize();
-                 } else {
-                      console.warn("Carousel track found, but no slides inside.");
-                 }
-             } else {
-                console.log("Carousel track element not found."); // Helps debug if selector fails
-             }
-         });
-    </script>
+        }); // End DOMContentLoaded
+     </script>
 
 </body>
 </html>
