@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Heatwaves and Gun Violence Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('page-project-detail');
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">About Me</a>
+            <a href="projects.html">Projects</a>
+            <a href="resume.html">Resume</a>
+        </nav>
+    </header>
+
+    <main class="project-detail-page">
+        <!-- Main Title and Subtitle -->
+        <h2>Heatwaves and Gun Violence Analysis</h2>
+        <h4>Exploring the Correlation Between Extreme Heat Events and Violent Crime</h4>
+
+        <!-- Visual Showcase Section (MOVED HERE) -->
+        <section class="visual-showcase">
+            <h3>Project Maps & Visuals</h3>
+            <div class="view-toggle">
+                 <button id="view-carousel-btn" class="toggle-btn active" aria-label="View as Carousel">
+                    <i class="fas fa-images"></i> Carousel View
+                </button>
+                <button id="view-grid-btn" class="toggle-btn" aria-label="View as Grid">
+                    <i class="fas fa-th"></i> Grid View
+                </button>
+            </div>
+
+            <div class="visuals-container view-carousel">
+
+                <!-- Carousel Structure -->
+                <div class="carousel">
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track">
+                            <!-- Slide 1: LIVE MAP Example -->
+                            <li class="carousel-slide current-slide">
+                                <figure data-live-map-url="https://keeferq.github.io/Gun_Violence/">
+                                    <img src="assets/images/project1_preview.png" alt="Interactive map screenshot">
+                                    <figcaption>Interactive Map: Explore Incidents</figcaption>
+                                    <div class="visual-hover-overlay">
+                                        <a href="https://keeferq.github.io/Gun_Violence/" target="_blank" class="view-project-button overlay-button">
+                                            <i class="fas fa-external-link-alt"></i> View Live Map
+                                        </a>
+                                        <p>Explore the interactive incident map.</p>
+                                    </div>
+                                </figure>
+                            </li>
+                            <!-- Slide 2: Static Image Example -->
+                            <li class="carousel-slide">
+                                <figure>
+                                    <img src="assets/images/project1_hw.png" alt="Heatwave Days by County">
+                                     <figcaption>Static Map: Heatwave Days by County</figcaption>
+                                </figure>
+                            </li>
+                             <!-- Slide 3: Another LIVE MAP Example -->
+                             <li class="carousel-slide">
+                                <figure data-live-map-url="https://keeferq.github.io/Buncombe_GV/">
+                                    <img src="assets/images/project1_buncombe.png" alt="Incident density map">
+                                     <figcaption>Interactive Map: Buncombe County, NC Gun Violence Map</figcaption>
+                                     <div class="visual-hover-overlay">
+                                        <a href="https://keeferq.github.io/Buncombe_GV/" target="_blank" class="view-project-button overlay-button">
+                                            <i class="fas fa-external-link-alt"></i> View Buncombe Map (Live)
+                                        </a>
+                                        <p>Explore the map</p>
+                                    </div>
+                                </figure>
+                            </li>
+                            <!-- Slide 4: Static Image Example -->
+                            <li class="carousel-slide">
+                                 <figure>
+                                     <img src="assets/images/project1_rr.png" alt="Relative Risk Map">
+                                     <figcaption>Staic Map: Relative Risk Map</figcaption>
+                                </figure>
+                            </li>
+                            <!-- Add more slides as needed -->
+                        </ul>
+                    </div>
+                    <!-- Carousel buttons and nav -->
+                    <button class="carousel-button carousel-button--left" aria-label="Previous Visual"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-button carousel-button--right" aria-label="Next Visual"><i class="fas fa-chevron-right"></i></button>
+                    <div class="carousel-nav">
+                        <button class="carousel-indicator current-slide"></button>
+                        <button class="carousel-indicator"></button>
+                        <button class="carousel-indicator"></button>
+                        <button class="carousel-indicator"></button>
+                        <!-- Add indicators matching the number of slides -->
+                    </div>
+                </div>
+
+                <!-- Grid Structure (Mirrors the carousel items) -->
+                <div class="image-grid">
+                     <!-- Grid Item 1: LIVE MAP Example -->
+                    <figure class="grid-item" data-live-map-url="https://keeferq.github.io/Gun_Violence/">
+                        <img src="assets/images/project1_preview.png" alt="Interactive map screenshot">
+                        <figcaption>Interactive Map: Explore Incidents</figcaption>
+                        <div class="visual-hover-overlay">
+                            <a href="https://keeferq.github.io/Gun_Violence/" target="_blank" class="view-project-button overlay-button">
+                                <i class="fas fa-external-link-alt"></i> View Live Map
+                            </a>
+                            <p>Explore the interactive incident map.</p>
+                        </div>
+                    </figure>
+                    <!-- Grid Item 2: Static Image Example -->
+                     <figure class="grid-item">
+                        <a href="assets/images/project1_hw.png" target="_blank" title="View larger: Heatwave Days by County">
+                            <img src="assets/images/project1_hw.png" alt="Heatwave Days by County">
+                        </a>
+                         <figcaption>Static Map: Heatwave Days by County</figcaption>
+                    </figure>
+                     <!-- Grid Item 3: Another LIVE MAP Example -->
+                     <figure class="grid-item" data-live-map-url="https://keeferq.github.io/Buncombe_GV/">
+                         <img src="assets/images/project1_buncombe.png" alt="Incident density map">
+                         <figcaption>Interactive Map: Buncombe County, NC Gun Violence Map</figcaption>
+                        <div class="visual-hover-overlay">
+                            <a href="https://keeferq.github.io/Buncombe_GV/" target="_blank" class="view-project-button overlay-button">
+                                <i class="fas fa-external-link-alt"></i> View Live Map
+                            </a>
+                             <p>Explore the map</p>
+                        </div>
+                    </figure>
+                     <!-- Grid Item 4: Static Image Example -->
+                     <figure class="grid-item">
+                         <a href="assets/images/project1_rr.png" target="_blank" title="View larger: Relative Risk Map">
+                             <img src="assets/images/project1_rr.png" alt="Relative Risk Map">
+                         </a>
+                         <figcaption>Static Map: Local Relative Risk</figcaption>
+                    </figure>
+                    <!-- Add more figures as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction / Overview Section (NOW FOLLOWS VISUALS) -->
+        <section class="project-intro">
+            <h3>Project Overview</h3>
+            <p>This research project investigated the potential relationship between periods of extreme heat (heatwaves) and the frequency or severity of gun violence incidents across the United States. The project involved acquiring, cleaning, integrating, and analyzing large datasets related to weather patterns and crime reports. Data was processed primarily using R and visualized spatially using web mapping technologies (Leaflet.js) to create interactive explorations.</p>
+            <p>A key outcome was an interactive web map showcasing processed incident data, alongside static maps highlighting specific findings. The research associated with this project, particularly the poster presentation, received the Best Undergraduate Poster at the Office of Student Research Poster Competetition on April 16, 2025.</p>
+            <!-- The div class="project-links" containing buttons has been REMOVED -->
+        </section>
+
+         <!-- Poster & Award Section -->
+         <section class="poster-award-section">
+             <h3>Research Poster</h3>
+              <div class="poster-container">
+                  <a href="assets/files/Heatwave_GunViolence_Poster.pdf" target="_blank" title="View Full Poster (PDF)">
+                    <img src="assets/images/poster_preview.png" alt="Preview of the Heatwave and Gun Violence Research Poster" class="poster-image"> <!-- Remember to create this preview image -->
+                  </a>
+              </div>
+              <p class="award-mention">
+                  <i class="fas fa-award"></i> With this poster I recieved the Best Undergraduate Poster award at the Appalachian State Student Research Day Poster Competition in 2025. View the full poster <a href="assets/files/Heatwave_GunViolence_Poster.pdf" target="_blank">here (PDF)</a>.
+              </p>
+         </section>
+
+        <!-- Usage Visualization Section -->
+        <section class="usage-visualization">
+             <h3>Key Tools & Technologies</h3>
+             <!-- Content remains the same -->
+            <div class="usage-bars-section">
+                <h4>Software Usage</h4>
+                 <div class="usage-bar">
+                    <span class="bar-label">RStudio</span>
+                    <div class="bar-track"><div class="bar-fill rstudio-color" data-percentage="50"></div></div>
+                    <span class="bar-percentage">50%</span>
+                </div>
+                <div class="usage-bar">
+                    <span class="bar-label">VS Code</span>
+                    <div class="bar-track"><div class="bar-fill vscode-color" data-percentage="25"></div></div>
+                    <span class="bar-percentage">25%</span>
+                </div>
+                 <div class="usage-bar">
+                    <span class="bar-label">ArcGIS Pro</span>
+                    <div class="bar-track"><div class="bar-fill arcgis-color" data-percentage="25"></div></div>
+                    <span class="bar-percentage">25%</span>
+                </div>
+            </div>
+             <div class="usage-bars-section">
+                <h4>Languages Used</h4>
+                 <div class="usage-bar">
+                    <span class="bar-label">R</span>
+                    <div class="bar-track"><div class="bar-fill language-color-r" data-percentage="40"></div></div>
+                    <span class="bar-percentage">50%</span>
+                </div>
+                 <div class="usage-bar">
+                    <span class="bar-label">JavaScript</span>
+                    <div class="bar-track"><div class="bar-fill language-color-js" data-percentage="30"></div></div>
+                    <span class="bar-percentage">30%</span>
+                </div>
+                 <div class="usage-bar">
+                    <span class="bar-label">HTML/CSS</span>
+                    <div class="bar-track"><div class="bar-fill language-color-htmlcss" data-percentage="20"></div></div>
+                    <span class="bar-percentage">20%</span>
+                </div>
+            </div>
+        </section>
+
+         <!-- Lessons Learned Section -->
+         <section>
+            <h3>Lessons Learned & Key Findings</h3>
+            <p>This project provided valuable experience in handling large, datasets (weather, crime) and developing methods for spatio-temporal analysis. Key findings indicated that the heatwaves and gunviolence has spatial correlation in some ares of the West Coast.</p>
+             <ul>
+                <li>Developed proficiency in R for data manipulation (dplyr, tidyr), spatial analysis using sf and time series analysis related to environmental and social data.</li>
+                <li>Gained experience integrating diverse data sources and addressing challenges like temporal/spatial alignment and varying reporting standards.</li>
+                <li>Enhanced skills in creating interactive web maps with Leaflet.js for visualizing complex spatio-temporal patterns effectively.</li>
+                 <li>Practiced communicating research findings visually through both static maps and a formal research poster.</li>
+                <li>Future Consideration: Incorporating additional socio-economic variables to explore confounding factors or differential impacts.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i>quinn.keefer@gmail.com</p>
+
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/keeferq" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/quinn-keefer-b5043b349/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                 <!-- Add other social links here -->
+            </div>
+        </div>
+         <p class="copyright">© 2025 Quinn Keefer</p>
+    </footer>
+
+     <!-- JavaScript remains the same -->
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Bar Animation ---
+            const fillBars = document.querySelectorAll('.bar-fill');
+            fillBars.forEach(bar => {
+                const percentage = bar.getAttribute('data-percentage');
+                 setTimeout(() => { bar.style.width = percentage + '%'; }, 50);
+             });
+
+            // --- View Toggle ---
+             const visualsContainer = document.querySelector('.visuals-container');
+             const viewCarouselBtn = document.getElementById('view-carousel-btn');
+             const viewGridBtn = document.getElementById('view-grid-btn');
+             if (visualsContainer && viewCarouselBtn && viewGridBtn) {
+                 viewCarouselBtn.addEventListener('click', () => {
+                    visualsContainer.classList.remove('view-grid');
+                    visualsContainer.classList.add('view-carousel');
+                    viewCarouselBtn.classList.add('active');
+                    viewGridBtn.classList.remove('active');
+                 });
+                 viewGridBtn.addEventListener('click', () => {
+                    visualsContainer.classList.remove('view-carousel');
+                    visualsContainer.classList.add('view-grid');
+                    viewGridBtn.classList.add('active');
+                    viewCarouselBtn.classList.remove('active');
+                 });
+             }
+
+             // --- Carousel Functionality ---
+             const track = document.querySelector('.carousel-track');
+             if(track) {
+                 const slides = Array.from(track.children);
+                 const nextButton = document.querySelector('.carousel-button--right');
+                 const prevButton = document.querySelector('.carousel-button--left');
+                 const dotsNav = document.querySelector('.carousel-nav');
+                 const dots = dotsNav ? Array.from(dotsNav.children) : [];
+
+                 if (slides.length > 0) {
+                      let slideWidth = slides[0].getBoundingClientRect().width;
+
+                      const setSlidePosition = (slide, index) => { slide.style.left = slideWidth * index + 'px'; };
+                      slides.forEach(setSlidePosition);
+
+                     const moveToSlide = (currentSlide, targetSlide) => {
+                        if (!targetSlide) return;
+                        track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+                        currentSlide.classList.remove('current-slide');
+                        targetSlide.classList.add('current-slide');
+                    };
+                     const updateDots = (currentDot, targetDot) => {
+                        if (!currentDot || !targetDot) return;
+                        currentDot.classList.remove('current-slide');
+                        targetDot.classList.add('current-slide');
+                    }
+                     const hideShowArrows = (targetIndex) => {
+                        if (!prevButton || !nextButton) return;
+                         if (targetIndex === 0) {
+                             prevButton.classList.add('is-hidden');
+                             nextButton.classList.remove('is-hidden');
+                         } else if (targetIndex === slides.length - 1) {
+                             prevButton.classList.remove('is-hidden');
+                             nextButton.classList.add('is-hidden');
+                         } else {
+                             prevButton.classList.remove('is-hidden');
+                             nextButton.classList.remove('is-hidden');
+                         }
+                     }
+
+                     if(prevButton) prevButton.classList.add('is-hidden');
+
+                      if(prevButton) {
+                           prevButton.addEventListener('click', e => {
+                                const currentSlide = track.querySelector('.current-slide');
+                                const prevSlide = currentSlide.previousElementSibling;
+                                const currentDot = dotsNav ? dotsNav.querySelector('.current-slide') : null;
+                                const prevDot = currentDot ? currentDot.previousElementSibling : null;
+                                const prevIndex = slides.findIndex(slide => slide === prevSlide);
+                                moveToSlide(currentSlide, prevSlide);
+                                updateDots(currentDot, prevDot);
+                                hideShowArrows(prevIndex);
+                           });
+                       }
+                      if(nextButton) {
+                           nextButton.addEventListener('click', e => {
+                                const currentSlide = track.querySelector('.current-slide');
+                                const nextSlide = currentSlide.nextElementSibling;
+                                const currentDot = dotsNav ? dotsNav.querySelector('.current-slide') : null;
+                                const nextDot = currentDot ? currentDot.nextElementSibling : null;
+                                const nextIndex = slides.findIndex(slide => slide === nextSlide);
+                                moveToSlide(currentSlide, nextSlide);
+                                updateDots(currentDot, nextDot);
+                                hideShowArrows(nextIndex);
+                           });
+                       }
+                     if(dotsNav && dots.length > 0) {
+                          dotsNav.addEventListener('click', e => {
+                              const targetDot = e.target.closest('button');
+                              if (!targetDot) return;
+                              const currentSlide = track.querySelector('.current-slide');
+                              const currentDot = dotsNav.querySelector('.current-slide');
+                              const targetIndex = dots.findIndex(dot => dot === targetDot);
+                              const targetSlide = slides[targetIndex];
+                              moveToSlide(currentSlide, targetSlide);
+                              updateDots(currentDot, targetDot);
+                              hideShowArrows(targetIndex);
+                          });
+                      }
+
+                      window.addEventListener('resize', () => {
+                           slideWidth = slides[0].getBoundingClientRect().width;
+                           slides.forEach(setSlidePosition);
+                           const currentSlide = track.querySelector('.current-slide');
+                           if(currentSlide) {
+                               track.style.transform = 'translateX(-' + currentSlide.style.left + ')';
+                           }
+                      });
+                 }
+             }
+         });
+    </script>
+
+</body>
+</html>

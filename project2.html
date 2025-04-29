@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: UAV-Based Bathymetry - Quinn Keefer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        // Add body class for specific page styling rules
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('page-project-detail');
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">About Me</a>
+            <a href="projects.html">Projects</a>
+            <a href="resume.html">Resume</a>
+        </nav>
+    </header>
+
+    <main class="project-detail-page">
+        <!-- Main Title and Subtitle -->
+        <h2>UAV-Based Bathymetry System Testing & Validation</h2>
+        <h4>Ongoing Research (May 2024 - Present)</h4>
+
+        <!-- Visual Showcase Section (Adapted from project1.html) -->
+        <section class="visual-showcase">
+            <h3>Project Visuals & Outputs</h3>
+            <div class="view-toggle">
+                 <button id="view-carousel-btn" class="toggle-btn active" aria-label="View as Carousel">
+                    <i class="fas fa-images"></i> Carousel View
+                </button>
+                <button id="view-grid-btn" class="toggle-btn" aria-label="View as Grid">
+                    <i class="fas fa-th"></i> Grid View
+                </button>
+            </div>
+
+            <div class="visuals-container view-carousel">
+
+                <!-- Carousel Structure -->
+                <div class="carousel">
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track">
+                            <!-- Slide 1: Interactive 3D Scene -->
+                            <li class="carousel-slide current-slide">
+                                <figure data-live-map-url="https://appalachian.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b51228fd2f8a4c80b61c2c8573adb456">
+                                    <img src="assets/images/project2_preview.png" alt="3D view of lake bathymetry generated from UAV sonar data">
+                                    <figcaption>Interactive Output: 3D Bathymetric Model</figcaption>
+                                    <div class="visual-hover-overlay">
+                                        <a href="https://appalachian.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b51228fd2f8a4c80b61c2c8573adb456" target="_blank" class="view-project-button overlay-button">
+                                            <i class="fas fa-external-link-alt"></i> View 3D Scene
+                                        </a>
+                                        <p>Explore the model in ArcGIS Online.</p>
+                                    </div>
+                                </figure>
+                            </li>
+                            <!-- Slide 2: Placeholder for Fieldwork Photo -->
+                            <li class="carousel-slide">
+                                <figure>
+                                    <!-- [**TODO: Replace with actual fieldwork image**] -->
+                                    <img src="assets/images/project2_field.png" alt="UAV Sonar system during field deployment (Placeholder)">
+                                    <figcaption>Fieldwork: Left: Collecting Ground Truth data, Right: Drone Platform with Sonar Sensor</figcaption>
+                                    <!-- Add hover overlay if you want a larger view link -->
+                                </figure>
+                            </li>
+                             <!-- Slide 3: Placeholder for ArcGIS Pro Screenshot -->
+                             <li class="carousel-slide">
+                                <figure>
+                                     <!-- [**TODO: Replace with actual ArcGIS Pro image**] -->
+                                    <img src="assets/images/project2_change.png" alt="Change Detection Raster">
+                                    <figcaption>Processing: Change Detection Raster</figcaption>
+                                     <!-- Add hover overlay if you want a larger view link -->
+                                </figure>
+                            </li>
+                            <!-- Slide 4: Placeholder for another Map Output -->
+                            <li class="carousel-slide">
+                                 <figure>
+                                     <!-- [**TODO: Replace with actual 2D Map image**] -->
+                                     <img src="assets/images/project2_3dviz.png" alt="Generated 2D bathymetry map (Placeholder)">
+                                     <figcaption>Map Output: 3D Bathymetry Visualization Map</figcaption>
+                                      <!-- Add hover overlay if you want a larger view link -->
+                                </figure>
+                            </li>
+                            <!-- Add more slides as needed -->
+                        </ul>
+                    </div>
+                    <!-- Carousel buttons and nav -->
+                    <button class="carousel-button carousel-button--left" aria-label="Previous Visual"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-button carousel-button--right" aria-label="Next Visual"><i class="fas fa-chevron-right"></i></button>
+                    <div class="carousel-nav">
+                        <!-- [**TODO: Adjust indicator count to match number of slides**] -->
+                        <button class="carousel-indicator current-slide"></button>
+                        <button class="carousel-indicator"></button>
+                        <button class="carousel-indicator"></button>
+                        <button class="carousel-indicator"></button>
+                    </div>
+                </div>
+
+                <!-- Grid Structure (Mirrors the carousel items) -->
+                <div class="image-grid">
+                     <!-- Grid Item 1: Interactive 3D Scene -->
+                    <figure class="grid-item" data-live-map-url="https://appalachian.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b51228fd2f8a4c80b61c2c8573adb456">
+                        <img src="assets/images/project2_preview.png" alt="3D view of lake bathymetry generated from UAV sonar data">
+                        <figcaption>Interactive Output: 3D Bathymetric Model</figcaption>
+                        <div class="visual-hover-overlay">
+                            <a href="https://appalachian.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b51228fd2f8a4c80b61c2c8573adb456" target="_blank" class="view-project-button overlay-button">
+                                <i class="fas fa-external-link-alt"></i> View 3D Scene
+                            </a>
+                            <p>Explore the model in ArcGIS Online.</p>
+                        </div>
+                    </figure>
+                    <!-- Grid Item 2: Placeholder Fieldwork -->
+                     <figure class="grid-item">
+                        <a href="assets/images/project2_field.png" target="_blank" title="View larger: UAV Field Deployment">
+                            <img src="assets/images/project2_field.png" alt="UAV Sonar system during field deployment">
+                        </a>
+                        <figcaption>Fieldwork: Left: Collecting Ground Truth data, Right: Drone Platform with Sonar Sensor</figcaption>
+                    </figure>
+                     <!-- Grid Item 3: Placeholder ArcGIS Pro -->
+                     <figure class="grid-item">
+                        <a href="assets/images/project2_change.png" target="_blank" title="View larger: Change Detection Raster">
+                         <img src="assets/images/project2_change.png" alt="Change Detection Raster">
+                        </a>
+                         <figcaption>Processing: ArcGIS Pro Workflow</figcaption>
+                    </figure>
+                     <!-- Grid Item 4: Placeholder Map -->
+                     <figure class="grid-item">
+                        <a href="assets/images/project2_3dviz.png" target="_blank" title="View larger: 3D Bathymetry Map">
+                           <img src="assets/images/project2_3dviz.png" alt="Generated 3D bathymetry map">
+                        </a>
+                        <figcaption>Map Output: 3D Bathymetry Visualization Map</figcaption>
+                    </figure>
+                    <!-- Add more figures corresponding to slides -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction / Overview Section (Adapted from project1.html) -->
+        <section class="project-intro">
+            <h3>Project Overview</h3>
+            <!-- Content from original "Project Description" -->
+            <p>This ongoing research project focuses on testing and validating an innovative Unoccupied Aerial Vehicle (UAV)-based sonar system for bathymetric mapping (measuring underwater topography). My involvement has spanned the entire workflow, from field data collection using the custom drone setup to processing the collected data and generating final map products and visualizations.</p>
+            <p>The primary goal is to assess the accuracy, efficiency, and applicability of this novel drone-sonar integration compared to traditional bathymetric survey methods. Work involves processing sonar readings, correcting for drone positioning (RTK GPS), generating point clouds, interpolating surfaces (e.g., using IDW or Kriging), and creating 2D and 3D map products using GIS software.</p>
+        </section>
+
+         <!-- Poster Section (Adapted from project1.html's poster section) -->
+         <section class="poster-award-section">
+             <h3>Project Poster</h3>
+              <div class="poster-container">
+                  <a href="assets/files/project2_poster.pdf" target="_blank" title="View Full Poster (PDF)">
+                    <img src="assets/images/project2_poster_preview.png" alt="Preview of the UAV Bathymetry Research Poster" class="poster-image">
+                  </a>
+              </div>
+              <!-- Simplified text, no award mention unless applicable -->
+              <p class="award-mention">
+                   <!-- [**TODO: Add award info if applicable, otherwise just link**] -->
+                   <!-- <i class="fas fa-award"></i> [Mention Award if Received] -->
+                  <i class="fas fa-file-pdf"></i> This poster details the methodology and preliminary results. View the full poster <a href="assets/files/project2_poster.pdf" target="_blank">here (PDF)</a>.
+              </p>
+         </section>
+
+        <!-- Usage Visualization Section (Adapted from project1.html) -->
+        <section class="usage-visualization">
+             <h3>Key Tools & Technologies</h3>
+            <div class="usage-bars-section">
+                <h4>Software Usage</h4>
+                <div class="usage-bar">
+                    <span class="bar-label">ArcGIS Pro</span>
+                    <div class="bar-track">
+                        <div class="bar-fill arcgis-color" data-percentage="70"></div>
+                    </div>
+                    <span class="bar-percentage">70%</span>
+                </div>
+                <div class="usage-bar">
+                    <span class="bar-label">Drone2Map</span>
+                    <div class="bar-track">
+                        <div class="bar-fill drone2map-color" data-percentage="10"></div>
+                    </div>
+                    <span class="bar-percentage">10%</span>
+                </div>
+                 <div class="usage-bar">
+                    <span class="bar-label">Excel</span>
+                    <div class="bar-track">
+                        <div class="bar-fill excel-color" data-percentage="10"></div>
+                    </div>
+                    <span class="bar-percentage">10%</span>
+                </div>
+                <div class="usage-bar">
+                    <span class="bar-label">Hydromagic</span>
+                     <!-- Assuming --color-hydromagic exists in CSS -->
+                    <div class="bar-track">
+                        <div class="bar-fill hydromagic-color" data-percentage="5"></div>
+                    </div>
+                    <span class="bar-percentage">5%</span>
+                </div>
+                 <!-- Adding Python as per original comment -->
+                 <div class="usage-bar">
+                    <span class="bar-label">Python (ArcPy)</span>
+                    <div class="bar-track">
+                        <div class="bar-fill language-color-python" data-percentage="5"></div>
+                     </div>
+                     <span class="bar-percentage">5%</span>
+                </div>
+            </div>
+           
+        </section>
+
+         <!-- Lessons Learned Section -->
+         <section>
+            <h3>Lessons Learned & Key Outcomes</h3>
+            <!-- Using existing content, ensured formatting matches project1 -->
+            <p>This project has provided hands-on experience with cutting-edge remote sensing technology and advanced geospatial workflows.</p>
+            <ul>
+                <li>Gained expertise in planning and executing UAV-based field surveys, including RTK GPS integration and flight planning considerations for bathymetry.</li>
+                <li>Mastered processing sonar data (e.g., filtering noise) and integrating it with high-accuracy positional information within ArcGIS Pro.</li>
+                <li>Developed advanced skills in 3D data interpolation (e.g., IDW, Kriging, TIN creation), geostatistical analysis, and visualization (creating DEMs, hillshades, interactive 3D scenes).</li>
+                <li>Learned about accuracy assessment techniques specific to bathymetric data, comparing UAV results with traditional methods or ground truth points.</li>
+                <li>Familiarized with specialized software like Hydromagic for initial sonar log processing and Drone2Map for potential surface modeling or orthomosaic integration (if applicable).</li>
+               
+            </ul>
+        </section>
+
+        <!-- Removed the separate "Code Repository / Outputs" section -->
+        <!-- Links should primarily be in Visual Showcase hovers or Poster section -->
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i>quinn.keefer@gmail.com</p>
+
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/keeferq" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/quinn-keefer-b5043b349/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                 <!-- Add other social links here -->
+            </div>
+        </div>
+         <p class="copyright">© 2025 Quinn Keefer</p>
+    </footer>
+
+     <!-- Full JavaScript from project1.html -->
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Bar Animation ---
+            const fillBars = document.querySelectorAll('.bar-fill');
+            fillBars.forEach(bar => {
+                const percentage = bar.getAttribute('data-percentage');
+                 // Slight delay to ensure visibility for animation
+                 setTimeout(() => { bar.style.width = percentage + '%'; }, 50);
+             });
+
+            // --- View Toggle ---
+             const visualsContainer = document.querySelector('.visuals-container');
+             const viewCarouselBtn = document.getElementById('view-carousel-btn');
+             const viewGridBtn = document.getElementById('view-grid-btn');
+             if (visualsContainer && viewCarouselBtn && viewGridBtn) {
+                 viewCarouselBtn.addEventListener('click', () => {
+                    visualsContainer.classList.remove('view-grid');
+                    visualsContainer.classList.add('view-carousel');
+                    viewCarouselBtn.classList.add('active');
+                    viewGridBtn.classList.remove('active');
+                    // Optional: Re-init carousel size if needed after display change
+                    window.dispatchEvent(new Event('resize'));
+                 });
+                 viewGridBtn.addEventListener('click', () => {
+                    visualsContainer.classList.remove('view-carousel');
+                    visualsContainer.classList.add('view-grid');
+                    viewGridBtn.classList.add('active');
+                    viewCarouselBtn.classList.remove('active');
+                 });
+             }
+
+             // --- Carousel Functionality ---
+             const track = document.querySelector('.carousel-track');
+             if(track) {
+                 const slides = Array.from(track.children);
+                 const nextButton = document.querySelector('.carousel-button--right');
+                 const prevButton = document.querySelector('.carousel-button--left');
+                 const dotsNav = document.querySelector('.carousel-nav');
+                 const dots = dotsNav ? Array.from(dotsNav.children) : [];
+
+                 if (slides.length > 0) {
+                      let slideWidth = slides[0].getBoundingClientRect().width;
+                      // Ensure width is calculated correctly, esp if starting hidden
+                       if (slideWidth === 0 && visualsContainer.classList.contains('view-carousel')) {
+                           // Temporarily make it visible to calc width if needed (complex edge case)
+                            const parentContainer = track.closest('.carousel');
+                            if (parentContainer) {
+                                parentContainer.style.display = 'block'; // Make sure container visible
+                                parentContainer.style.opacity = '0';    // Hide visually
+                                slideWidth = slides[0].getBoundingClientRect().width;
+                                parentContainer.style.display = '';    // Revert
+                                parentContainer.style.opacity = '';
+                            }
+                       }
+
+
+                      const setSlidePosition = (slide, index) => {
+                           if (slideWidth > 0) { // Only set if width is valid
+                              slide.style.left = slideWidth * index + 'px';
+                           }
+                      };
+                      slides.forEach(setSlidePosition);
+
+                     const moveToSlide = (currentSlide, targetSlide) => {
+                        if (!targetSlide || !currentSlide || !track) return; // Added checks
+                        const targetLeft = targetSlide.style.left;
+                         if(targetLeft) {
+                           track.style.transform = 'translateX(-' + targetLeft + ')';
+                           currentSlide.classList.remove('current-slide');
+                           targetSlide.classList.add('current-slide');
+                         } else {
+                            console.warn("Target slide has no 'left' style property set.");
+                            // May need to recalculate positions here if resize failed previously
+                         }
+                    };
+                     const updateDots = (currentDot, targetDot) => {
+                        if (!currentDot || !targetDot) return;
+                        currentDot.classList.remove('current-slide');
+                        targetDot.classList.add('current-slide');
+                    }
+                     const hideShowArrows = (targetIndex) => {
+                        if (!prevButton || !nextButton || slides.length <= 1) {
+                            if(prevButton) prevButton.classList.add('is-hidden');
+                            if(nextButton) nextButton.classList.add('is-hidden');
+                            return;
+                        };
+
+                         if (targetIndex === 0) {
+                             prevButton.classList.add('is-hidden');
+                             nextButton.classList.remove('is-hidden');
+                         } else if (targetIndex === slides.length - 1) {
+                             prevButton.classList.remove('is-hidden');
+                             nextButton.classList.add('is-hidden');
+                         } else {
+                             prevButton.classList.remove('is-hidden');
+                             nextButton.classList.remove('is-hidden');
+                         }
+                     }
+
+                     // Initial setup for arrows and dots
+                     const initialSlideIndex = slides.findIndex(slide => slide.classList.contains('current-slide'));
+                     hideShowArrows(initialSlideIndex);
+                      if(dots.length > 0 && initialSlideIndex < dots.length) {
+                           dots.forEach(dot => dot.classList.remove('current-slide'));
+                           dots[initialSlideIndex].classList.add('current-slide');
+                      }
+
+
+                      if(prevButton) {
+                           prevButton.addEventListener('click', e => {
+                                const currentSlide = track.querySelector('.current-slide');
+                                const prevSlide = currentSlide.previousElementSibling;
+                                if (!prevSlide) return; // Don't move if already at the first
+                                const currentDot = dotsNav ? dotsNav.querySelector('.current-slide') : null;
+                                const prevDot = currentDot ? currentDot.previousElementSibling : null;
+                                const prevIndex = slides.findIndex(slide => slide === prevSlide);
+                                moveToSlide(currentSlide, prevSlide);
+                                updateDots(currentDot, prevDot);
+                                hideShowArrows(prevIndex);
+                           });
+                       }
+                      if(nextButton) {
+                           nextButton.addEventListener('click', e => {
+                                const currentSlide = track.querySelector('.current-slide');
+                                const nextSlide = currentSlide.nextElementSibling;
+                                 if (!nextSlide) return; // Don't move if already at the last
+                                const currentDot = dotsNav ? dotsNav.querySelector('.current-slide') : null;
+                                const nextDot = currentDot ? currentDot.nextElementSibling : null;
+                                const nextIndex = slides.findIndex(slide => slide === nextSlide);
+                                moveToSlide(currentSlide, nextSlide);
+                                updateDots(currentDot, nextDot);
+                                hideShowArrows(nextIndex);
+                           });
+                       }
+                     if(dotsNav && dots.length > 0) {
+                          dotsNav.addEventListener('click', e => {
+                              const targetDot = e.target.closest('button');
+                              if (!targetDot) return;
+                              const currentSlide = track.querySelector('.current-slide');
+                              const currentDot = dotsNav.querySelector('.current-slide');
+                              if (currentDot === targetDot) return; // Don't move if clicking current dot
+                              const targetIndex = dots.findIndex(dot => dot === targetDot);
+                              const targetSlide = slides[targetIndex];
+                              moveToSlide(currentSlide, targetSlide);
+                              updateDots(currentDot, targetDot);
+                              hideShowArrows(targetIndex);
+                          });
+                      }
+
+                      // Recalculate on resize
+                      const handleResize = () => {
+                            const currentVisibleSlide = track.querySelector('.current-slide'); // Find current before resize
+                            // Check if carousel is actually visible
+                            if(visualsContainer.classList.contains('view-carousel') && track.offsetWidth > 0) {
+                               slideWidth = slides[0].getBoundingClientRect().width;
+                               slides.forEach(setSlidePosition);
+                               // Immediately move track to correct position after resetting slide 'left'
+                               if(currentVisibleSlide && slideWidth > 0) {
+                                    track.style.transition = 'none'; // Prevent animation during resize adjustment
+                                    track.style.transform = 'translateX(-' + currentVisibleSlide.style.left + ')';
+                                    // Force repaint/reflow before re-enabling transition
+                                    track.offsetHeight;
+                                    track.style.transition = ''; // Re-enable transition
+                               } else if (slides.length > 0 && slideWidth > 0) {
+                                   // Fallback if current slide wasn't found? Reset to first.
+                                    track.style.transition = 'none';
+                                    track.style.transform = 'translateX(0px)';
+                                    track.offsetHeight;
+                                    track.style.transition = '';
+                                    if(!currentVisibleSlide) slides[0].classList.add('current-slide'); // Ensure one is current
+                               }
+                            }
+                      }
+
+                      window.addEventListener('resize', handleResize);
+                       // Call once initially in case calculation failed before
+                      handleResize();
+                 } else {
+                      console.warn("Carousel track found, but no slides inside.");
+                 }
+             } else {
+                console.log("Carousel track element not found."); // Helps debug if selector fails
+             }
+         });
+    </script>
+
+</body>
+</html>

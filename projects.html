@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Quinn Keefer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- Add active class logic for projects page -->
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('page-projects');
+            // Logic to set active nav link
+            const headerNavLinks = document.querySelectorAll('header nav a');
+            headerNavLinks.forEach(link => {
+                link.classList.remove('active');
+                 if (link.getAttribute('href') === 'projects.html') {
+                    link.classList.add('active');
+                 }
+            });
+        });
+    </script>
+</head>
+<body class="page-projects">
+    <header>
+        <nav>
+            <a href="index.html">About Me</a>
+            <a href="projects.html" class="active">Projects</a> <!-- Manually set active class, JS will also handle -->
+            <a href="resume.html">Resume</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>My Projects</h2>
+        <p>Here are some of the projects I've worked on. Click on any project to learn more about the process, tools used, and outcomes.</p>
+
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-grid-item">
+                <a href="project1.html">
+                    <div class="img-container">
+                       <img src="assets/images/project1_preview.png" alt="Map showing gun violence data points">
+                    </div>
+                    <h3>Heatwaves and Gun Violence Analysis</h3> <!-- Title Consistency -->
+                </a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-grid-item">
+                <a href="project2.html">
+                     <div class="img-container">
+                        <img src="assets/images/project2_preview.png" alt="3D visualization of bathymetry data">
+                     </div>
+                    <h3>UAV-Based Bathymetry Validation</h3> <!-- Title Consistency -->
+                </a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-grid-item">
+                <a href="project3.html">
+                     <div class="img-container">
+                        <img src="assets/images/project3_preview.png" alt="Preview of Maternal Health Project"> <!-- Alt text consistency -->
+                     </div>
+                    <h3>Maternal Health Dataset Management</h3>
+                </a>
+            </div>
+
+            <!-- Add more projects as needed -->
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                 <!-- Consistent contact info -->
+                 <p><i class="fas fa-envelope"></i>quinn.keefer@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i>Boone, NC</p>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/keeferq" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/quinn-keefer-b5043b349/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+         <p class="copyright">© 2025 Quinn Keefer</p>
+    </footer>
+</body>
+</html>
